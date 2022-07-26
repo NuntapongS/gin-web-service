@@ -25,7 +25,7 @@ func main() {
 
 	router.GET("/entities", getEntities)
 	router.GET("/entities/:id", getEntitiesById)
-	router.POST("/entities", postEntities)
+	router.POST("/entities", addEntities)
 	router.DELETE("/entities/:id", deleteEntities)
 
 	router.Run()
@@ -47,7 +47,7 @@ func getEntitiesById(c *gin.Context) {
 	c.IndentedJSON(http.StatusNotFound, gin.H{"message": "entities not found"})
 }
 
-func postEntities(c *gin.Context) {
+func addEntities(c *gin.Context) {
 	var newEntity entity
 
 	if err := c.BindJSON(&newEntity); err != nil {
