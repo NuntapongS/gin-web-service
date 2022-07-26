@@ -26,7 +26,7 @@ func main() {
 	router.GET("/entities", getEntities)
 	router.GET("/entities/:id", getEntitiesById)
 	router.POST("/entities", addEntities)
-	router.DELETE("/entities/:id", deleteEntities)
+	router.DELETE("/entities/:id", deleteEntitiesById)
 
 	router.Run()
 }
@@ -58,7 +58,7 @@ func addEntities(c *gin.Context) {
 	c.IndentedJSON(http.StatusOK, newEntity)
 }
 
-func deleteEntities(c *gin.Context) {
+func deleteEntitiesById(c *gin.Context) {
 	id := c.Param("id")
 
 	for i := 0; i <= len(entities)-1; i++ {
