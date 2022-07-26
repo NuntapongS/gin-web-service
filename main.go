@@ -14,8 +14,8 @@ type entity struct {
 }
 
 var entities = []entity {
-	{Id: "1", Name: "Nuntapong Siripanyawong", Gender: "Male", Email: "-"},
-	{Id: "2", Name: "Kanyanat Nomsian", Gender: "Female", Email: "-"},
+	{Id: "1", Name: "John snow", Gender: "Male", Email: "-"},
+	{Id: "2", Name: "Red Magenta", Gender: "Female", Email: "-"},
 
 }
 
