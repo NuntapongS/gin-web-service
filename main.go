@@ -23,7 +23,7 @@ func main() {
 
 	router := gin.Default()
 
-	router.GET("/entities", getEntities)
+	router.GET("/entities", getEntitiesList)
 	router.GET("/entities/:id", getEntitiesById)
 	router.POST("/entities", addEntities)
 	router.DELETE("/entities/:id", deleteEntitiesById)
@@ -31,7 +31,7 @@ func main() {
 	router.Run()
 }
 
-func getEntities(c *gin.Context) {
+func getEntitiesList(c *gin.Context) {
 	c.IndentedJSON(http.StatusOK, entities)
 }
 
