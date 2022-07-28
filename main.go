@@ -26,6 +26,7 @@ func main() {
 	router.GET("/entities", getEntitiesList)
 	router.GET("/entities/:id", getEntitiesById)
 	router.POST("/entities", addEntities)
+	router.PUT("/entities/:id", updateEntities)
 	router.DELETE("/entities/:id", deleteEntitiesById)
 
 	router.Run()
@@ -51,11 +52,34 @@ func addEntities(c *gin.Context) {
 	var newEntity entity
 
 	if err := c.BindJSON(&newEntity); err != nil {
-		return
+		return 
 	}
 
 	entities = append(entities, newEntity)
-	c.IndentedJSON(http.StatusOK, newEntity)
+	c.IndentedJSON(http.StatusOK, gin.H{"message": "add entities successfully"})
+}
+
+func updateEntities(c *gin.Context) {
+	var editEntities entity; 
+
+	if err := c.BindJSON(&editEntities); err != nil {
+		return
+	}
+
+	paramId := c.Param("id")
+
+	for i := 0; i <= len(entities)-1; i++ {
+		if entities[i].Id == paramId {
+			entities[i].Name = editEntities.Name
+			entities[i].Gender = editEntities.Gender
+			entities[i].Email = editEntities.Email
+
+			c.IndentedJSON(http.StatusOK, gin.H{"message": "update entities succesfully"})
+			return
+		}
+		c.IndentedJSON(http.StatusNotFound, gin.H{"message": "data not found"})
+	}
+
 }
 
 func deleteEntitiesById(c *gin.Context) {

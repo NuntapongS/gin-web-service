@@ -1,0 +1,8 @@
+PUT http://localhost:8080/entities/1
+
+{
+    "id" : "1",
+    "name" : "Maria Rose",
+    "gender" : "Female",
+    "email" : "-"
+}
